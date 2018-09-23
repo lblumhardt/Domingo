@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Floor.cs" />
+    <Compile Include="Assets\Scripts\Kart.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
