@@ -104,4 +104,19 @@ public class PlayerController : MonoBehaviour
 
         return null;
     }
+
+    //Colliding with players and Impassable obstacles
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Impassable"))
+        {
+            Vector3 backwards = -transform.forward;
+            GetComponent<Rigidbody>().AddForce(backwards * 20.0f);
+            currSpeed = -currSpeed * 0.3f;
+            if (currSpeed > -1.5f)
+            {
+                currSpeed = -1.5f;
+            }
+        }
+    }
 }
