@@ -151,6 +151,11 @@
         <para>The current BaseInput being used by the input module.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.EventSystems.BaseInputModule.inputOverride">
+      <summary>
+        <para>Used to override the default BaseInput for the input module.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.EventSystems.BaseInputModule.ActivateModule">
       <summary>
         <para>Called when the module is activated. Override this if you want custom code to execute when you activate your module.</para>
@@ -205,7 +210,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.BaseInputModule.HandlePointerExitAndEnter(UnityEngine.EventSystems.PointerEventData,UnityEngine.GameObject)">
       <summary>
-        <para>Handle sending enter and exit events when a new enter targer is found.</para>
+        <para>Handle sending enter and exit events when a new enter target is found.</para>
       </summary>
       <param name="currentPointerData"></param>
       <param name="newEnterTarget"></param>
@@ -272,6 +277,11 @@
         <para>Priority of the raycaster based upon render order.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.EventSystems.BaseRaycaster.rootRaycaster">
+      <summary>
+        <para>Raycaster on root canvas.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.EventSystems.BaseRaycaster.sortOrderPriority">
       <summary>
         <para>Priority of the raycaster based upon sort order.</para>
@@ -284,7 +294,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.BaseRaycaster.Raycast(UnityEngine.EventSystems.PointerEventData,System.Collections.Generic.List`1&lt;UnityEngine.EventSystems.RaycastResult&gt;)">
       <summary>
-        <para>Raycast against the scene.</para>
+        <para>Raycast against the Scene.</para>
       </summary>
       <param name="eventData">Current event data.</param>
       <param name="resultAppendList">List of hit Objects.</param>
@@ -334,6 +344,11 @@
         <para>The GameObject that was selected first.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.EventSystems.EventSystem.isFocused">
+      <summary>
+        <para>Flag to say whether the EventSystem thinks it should be paused or not based upon focused state.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.EventSystems.EventSystem.pixelDragThreshold">
       <summary>
         <para>The soft area for dragging in pixels.</para>
@@ -363,14 +378,14 @@
     </member>
     <member name="M:UnityEngine.EventSystems.EventSystem.RaycastAll(UnityEngine.EventSystems.PointerEventData,System.Collections.Generic.List`1&lt;UnityEngine.EventSystems.RaycastResult&gt;)">
       <summary>
-        <para>Raycast into the scene using all configured BaseRaycasters.</para>
+        <para>Raycast into the Scene using all configured BaseRaycasters.</para>
       </summary>
       <param name="eventData">Current pointer data.</param>
       <param name="raycastResults">List of 'hits' to populate.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventSystem.SetSelectedGameObject(UnityEngine.GameObject,UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>Set the object as selected. Will send an OnDeselect the the old selected object and OnSelect to the new selected object.</para>
+        <para>Set the GameObject as selected. Will send an OnDeselect the the old selected object and OnSelect to the new selected object.</para>
       </summary>
       <param name="selected">GameObject to select.</param>
       <param name="pointer">Associated EventData.</param>
@@ -385,7 +400,7 @@
         <para>Receives events from the EventSystem and calls registered functions for each event.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.EventSystems.EventTrigger.delegates">
+    <member name="P:UnityEngine.EventSystems.EventTrigger.delegates">
       <summary>
         <para>All the functions registered in this EventTrigger (deprecated).</para>
       </summary>
@@ -708,7 +723,7 @@
     </member>
     <member name="T:UnityEngine.EventSystems.ExecuteEvents.EventFunction_1">
       <summary>
-        <para>Funtion definition for an EventFunction that is used to map a given EventInterface into a specific event call.</para>
+        <para>Function definition for an EventFunction that is used to map a given EventInterface into a specific event call.</para>
       </summary>
       <param name="handler"></param>
       <param name="eventData"></param>
@@ -853,7 +868,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.IPointerClickHandler.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para></para>
+        <para>Use this callback to detect clicks.</para>
       </summary>
       <param name="eventData">Current event data.</param>
     </member>
@@ -947,32 +962,32 @@
     </member>
     <member name="T:UnityEngine.EventSystems.MoveDirection">
       <summary>
-        <para>8 direction movement enum.</para>
+        <para>This is an 8 direction movement enum.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.MoveDirection.Down">
       <summary>
-        <para>Down.</para>
+        <para>The Down State of MoveDirection. Assign functionality for moving in a downward direction.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.MoveDirection.Left">
       <summary>
-        <para>Left.</para>
+        <para>This is the Left state of MoveDirection.  Assign functionality for moving to the left.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.MoveDirection.None">
       <summary>
-        <para>None.</para>
+        <para>This is the None state. Assign functionality that stops movement.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.MoveDirection.Right">
       <summary>
-        <para>Right.</para>
+        <para>This is the Right state of MoveDirection. Assign functionality for moving to the right.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.MoveDirection.Up">
       <summary>
-        <para>Up.</para>
+        <para>This is the Up state of MoveDirection.  Assign functionality for moving in an upward direction.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.EventSystems.Physics2DRaycaster">
@@ -1012,6 +1027,19 @@
         <para>Logical and of Camera mask and eventMask.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.EventSystems.PhysicsRaycaster.maxRayIntersections">
+      <summary>
+        <para>Max number of ray intersection allowed to be found.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.EventSystems.PhysicsRaycaster.ComputeRayAndDistance(UnityEngine.EventSystems.PointerEventData,UnityEngine.Ray&amp;,System.Single&amp;)">
+      <summary>
+        <para>Returns a ray going from camera through the event position and the distance between the near and far clipping planes along that ray.</para>
+      </summary>
+      <param name="eventData">The pointer event for which we will cast a ray.</param>
+      <param name="ray">The ray.</param>
+      <param name="distanceToClipPlane">The distance between the near and far clipping planes along the ray.</param>
+    </member>
     <member name="M:UnityEngine.EventSystems.PhysicsRaycaster.Raycast(UnityEngine.EventSystems.PointerEventData,System.Collections.Generic.List`1&lt;UnityEngine.EventSystems.RaycastResult&gt;)">
       <summary>
         <para>See: BaseRaycaster.</para>
@@ -1046,7 +1074,7 @@
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.dragging">
       <summary>
-        <para>Is a drag operation currently occuring.</para>
+        <para>Determines whether the user is dragging the mouse or trackpad.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.enterEventCamera">
@@ -1071,7 +1099,7 @@
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.pointerDrag">
       <summary>
-        <para>The object that is receiving 'OnDrag'.</para>
+        <para>The object that is receiving OnDrag.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.pointerEnter">
@@ -1081,7 +1109,7 @@
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.pointerId">
       <summary>
-        <para>Id of the pointer (touch id).</para>
+        <para>Identification of the pointer.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.pointerPress">
@@ -1106,7 +1134,7 @@
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.pressPosition">
       <summary>
-        <para>Position of the press.</para>
+        <para>The screen space coordinates of the last pointer click.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.EventSystems.PointerEventData.rawPointerPress">
@@ -1468,11 +1496,11 @@
     </member>
     <member name="M:UnityEngine.EventSystems.StandaloneInputModule.ProcessTouchPress(UnityEngine.EventSystems.PointerEventData,System.Boolean,System.Boolean)">
       <summary>
-        <para>How should the touch press be processed.</para>
+        <para>This method is called by Unity whenever a touch event is processed. Override this method with a custom implementation to process touch events yourself.</para>
       </summary>
-      <param name="pointerEvent">The data to be passed to the final object.</param>
-      <param name="pressed">If the touch was pressed this frame.</param>
-      <param name="released">If the touch was released this frame.</param>
+      <param name="pointerEvent">Event data relating to the touch event, such as position and ID to be passed to the touch event destination object.</param>
+      <param name="pressed">This is true for the first frame of a touch event, and false thereafter. This can therefore be used to determine the instant a touch event occurred.</param>
+      <param name="released">This is true only for the last frame of a touch event.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.StandaloneInputModule.SendMoveEventToSelectedObject">
       <summary>
@@ -1620,7 +1648,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnRectTransformDimensionsChange">
       <summary>
-        <para>This callback is called if an associated RectTransform has its dimensions changed. The call is also made to all child rect transforms, even if the child transform itself doesn't change - as it could have, depending on its anchoring.</para>
+        <para>This callback is called if an associated RectTransform has its dimensions changed.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnTransformParentChanged">
@@ -1666,6 +1694,11 @@
     <member name="P:UnityEngine.UI.AnimationTriggers.pressedTrigger">
       <summary>
         <para>Trigger to send to animator when entering pressed state.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.AnimationTriggers.selectedTrigger">
+      <summary>
+        <para>Trigger to send to animator when entering selected state.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.AspectRatioFitter">
@@ -1767,7 +1800,7 @@
     </member>
     <member name="P:UnityEngine.UI.Button.onClick">
       <summary>
-        <para>UnityEvent that is triggered when the button is pressed.</para>
+        <para>UnityEvent that is triggered when the Button is pressed.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.Button.ButtonClickedEvent">
@@ -1890,7 +1923,7 @@
     <member name="F:UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize">
       <summary>
         <para>Using the Scale With Screen Size mode, positions and sizes can be specified according to the pixels of a specified reference resolution.
-If the current screen resolution is larger then the reference resolution, the Canvas will keep having only the resolution of the reference resolution, but will scale up in order to fit the screen. If the current screen resolution is smaller than the reference resolution, the Canvas will similarly be scaled down to fit.</para>
+If the current screen resolution is larger than the reference resolution, the Canvas will keep having only the resolution of the reference resolution, but will scale up in order to fit the screen. If the current screen resolution is smaller than the reference resolution, the Canvas will similarly be scaled down to fit.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.CanvasScaler.ScreenMatchMode">
@@ -2063,7 +2096,7 @@ One point is 112 of a pica, and 172 of an inch.</para>
     </member>
     <member name="T:UnityEngine.UI.ClipperRegistry">
       <summary>
-        <para>Registry class to keep track of all IClippers that exist in the scene.</para>
+        <para>Registry class to keep track of all IClippers that exist in the Scene.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.ClipperRegistry.instance">
@@ -2141,6 +2174,11 @@ One point is 112 of a pica, and 172 of an inch.</para>
     <member name="P:UnityEngine.UI.ColorBlock.pressedColor">
       <summary>
         <para>Pressed Color.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.ColorBlock.selectedColor">
+      <summary>
+        <para>Selected Color.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.ContentSizeFitter">
@@ -2347,6 +2385,11 @@ One point is 112 of a pica, and 172 of an inch.</para>
         <para>A standard dropdown that presents a list of options when clicked, of which one can be chosen.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Dropdown.alphaFadeSpeed">
+      <summary>
+        <para>How fast the drop down will appear and disapear when focus changes.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.UI.Dropdown.captionImage">
       <summary>
         <para>The Image component to hold the image of the currently selected option.</para>
@@ -2384,7 +2427,7 @@ One point is 112 of a pica, and 172 of an inch.</para>
     </member>
     <member name="P:UnityEngine.UI.Dropdown.value">
       <summary>
-        <para>The index of the currently selected option. 0 is the first option, 1 is the second, and so on.</para>
+        <para>The Value is the index number of the current selection in the Dropdown. 0 is the first option in the Dropdown, 1 is the second, and so on.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.UI.Dropdown.AddOptions(System.Collections.Generic.List`1&lt;UnityEngine.UI.Dropdown/OptionData&gt;)">
@@ -2543,6 +2586,12 @@ One point is 112 of a pica, and 172 of an inch.</para>
 If you have modified the list of options, you should call this method afterwards to ensure that the visual state of the dropdown corresponds to the updated options.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.UI.Dropdown.SetValueWithoutNotify(System.Int32)">
+      <summary>
+        <para>Set index number of the current selection in the Dropdown without invoking onValueChanged callback.</para>
+      </summary>
+      <param name="input">The new index for the current selection.</param>
+    </member>
     <member name="M:UnityEngine.UI.Dropdown.Show">
       <summary>
         <para>Show the dropdown list.</para>
@@ -2570,7 +2619,7 @@ If you have modified the list of options, you should call this method afterwards
     </member>
     <member name="P:UnityEngine.UI.FontData.defaultFontData">
       <summary>
-        <para>Get a font data with sensible defaults.</para>
+        <para>Maintain a list of all the FontData features.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.FontData.font">
@@ -2730,6 +2779,11 @@ If you have modified the list of options, you should call this method afterwards
         <para>See ICanvasElement.LayoutComplete.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.UI.Graphic.OnCullingChanged">
+      <summary>
+        <para>Callback function to call when the culling has changed.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.UI.Graphic.OnDisable">
       <summary>
         <para>See MonoBehaviour.OnDisable.</para>
@@ -2765,7 +2819,7 @@ If you have modified the list of options, you should call this method afterwards
     </member>
     <member name="M:UnityEngine.UI.Graphic.Raycast(UnityEngine.Vector2,UnityEngine.Camera)">
       <summary>
-        <para>When a GraphicRaycaster is raycasting into the scene it does two things. First it filters the elements using their RectTransform rect. Then it uses this Raycast function to determine the elements hit by the raycast.</para>
+        <para>When a GraphicRaycaster is raycasting into the Scene it does two things. First it filters the elements using their RectTransform rect. Then it uses this Raycast function to determine the elements hit by the raycast.</para>
       </summary>
       <param name="sp">Screen point.</param>
       <param name="eventCamera">Camera.</param>
@@ -2897,7 +2951,7 @@ If you have modified the list of options, you should call this method afterwards
     </member>
     <member name="M:UnityEngine.UI.GraphicRaycaster.Raycast(UnityEngine.EventSystems.PointerEventData,System.Collections.Generic.List`1&lt;UnityEngine.EventSystems.RaycastResult&gt;)">
       <summary>
-        <para>See: BaseRaycaster.</para>
+        <para>Determines if the cursor is over a Graphics element in the Scene. See: BaseRaycaster.</para>
       </summary>
       <param name="eventData"></param>
       <param name="resultAppendList"></param>
@@ -3099,12 +3153,12 @@ If you have modified the list of options, you should call this method afterwards
     </member>
     <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childControlHeight">
       <summary>
-        <para>Should the layout group control the heights of the children?</para>
+        <para>Returns true if the Layout Group controls the heights of its children. Returns false if children control their own heights.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childControlWidth">
       <summary>
-        <para>Should the layout group control the widths of the children?</para>
+        <para>Returns true if the Layout Group controls the widths of its children. Returns false if children control their own widths.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childForceExpandHeight">
@@ -3115,6 +3169,16 @@ If you have modified the list of options, you should call this method afterwards
     <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childForceExpandWidth">
       <summary>
         <para>Whether to force the children to expand to fill additional available horizontal space.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childScaleHeight">
+      <summary>
+        <para>Whether to use the y scale of each child when calculating its height.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.childScaleWidth">
+      <summary>
+        <para>Whether to use the x scale of each child when calculating its width.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.HorizontalOrVerticalLayoutGroup.spacing">
@@ -3214,7 +3278,7 @@ Used if the native representation has been destroyed.</para>
     </member>
     <member name="?:UnityEngine.UI.ILayoutController">
       <summary>
-        <para>Base interface to implement by componets that control the layout of RectTransforms.</para>
+        <para>Base interface to implement by components that control the layout of RectTransforms.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.UI.ILayoutController.SetLayoutHorizontal">
@@ -3412,6 +3476,11 @@ Used if the native representation has been destroyed.</para>
         <para>How to display the image.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Image.useSpriteMesh">
+      <summary>
+        <para>Allows you to specify whether the UI Image should be displayed using the mesh generated by the TextureImporter, or by a simple quad mesh.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.UI.Image.CalculateLayoutInputHorizontal">
       <summary>
         <para>See ILayoutElement.CalculateLayoutInputHorizontal.</para>
@@ -3422,9 +3491,14 @@ Used if the native representation has been destroyed.</para>
         <para>See ILayoutElement.CalculateLayoutInputVertical.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.UI.Image.DisableSpriteOptimizations">
+      <summary>
+        <para>Disables all automatic sprite optimizations.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.UI.Image.FillMethod">
       <summary>
-        <para>Fill method to be used by the Image.</para>
+        <para>Fill method to be used by the UI.Image.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Image.FillMethod.Horizontal">
@@ -3756,9 +3830,7 @@ Used if the native representation has been destroyed.</para>
     </member>
     <member name="P:UnityEngine.UI.InputField.placeholder">
       <summary>
-        <para>This is an optional ‘empty’ graphic to show that the InputField text field is empty. Note that this ‘empty' graphic still displays even when the InputField is selected (that is; when there is focus on it).
-
-A placeholder graphic can be used to show subtle hints or make it more obvious that the control is an InputField.</para>
+        <para>This is an optional ‘empty’ graphic to show that the InputField text field is empty.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.InputField.readOnly">
@@ -3794,6 +3866,11 @@ A placeholder graphic can be used to show subtle hints or make it more obvious t
     <member name="P:UnityEngine.UI.InputField.textComponent">
       <summary>
         <para>The Text component that is going to be used to render the text to screen.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.InputField.touchScreenKeyboard">
+      <summary>
+        <para>The TouchScreenKeyboard being used to edit the Input Field.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.InputField.wasCanceled">
@@ -3897,7 +3974,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="F:UnityEngine.UI.InputField.ContentType.Name">
       <summary>
-        <para>The InputField is used for typing in a name and enforces capitalization.</para>
+        <para>The InputField is used for typing in a name, and enforces capitalization of the first letter of each word. Note that the user can circumvent the first letter capitalization rules by deleting automatically-capitalized letters.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.InputField.ContentType.Password">
@@ -4103,6 +4180,12 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       <summary>
         <para>Convenience function to make functionality to send the SubmitEvent easier.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.UI.InputField.SetTextWithoutNotify(System.String)">
+      <summary>
+        <para>Set Input field's current text value without invoke onValueChanged.</para>
+      </summary>
+      <param name="input">The new text string.</param>
     </member>
     <member name="T:UnityEngine.UI.InputField.SubmitEvent">
       <summary>
@@ -4324,6 +4407,35 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       <param name="rect">The RectTransform of the child layout element.</param>
       <param name="axis">The axis to set the position and size along. 0 is horizontal and 1 is vertical.</param>
       <param name="pos">The position from the left side or top.</param>
+      <param name="size">The size.</param>
+    </member>
+    <member name="M:UnityEngine.UI.LayoutGroup.SetChildAlongAxis(UnityEngine.RectTransform,System.Int32,System.Single)">
+      <summary>
+        <para>Set the position and size of a child layout element along the given axis.</para>
+      </summary>
+      <param name="rect">The RectTransform of the child layout element.</param>
+      <param name="axis">The axis to set the position and size along. 0 is horizontal and 1 is vertical.</param>
+      <param name="pos">The position from the left side or top.</param>
+      <param name="size">The size.</param>
+    </member>
+    <member name="M:UnityEngine.UI.LayoutGroup.SetChildAlongAxisWithScale(UnityEngine.RectTransform,System.Int32,System.Single,System.Single)">
+      <summary>
+        <para>Set the position and size of a child layout element along the given axis with a known scale factor.</para>
+      </summary>
+      <param name="rect">The RectTransform of the child layout element.</param>
+      <param name="axis">The axis to set the position and size along. 0 is horizontal and 1 is vertical.</param>
+      <param name="pos">The position from the left side or top.</param>
+      <param name="scaleFactor">The scaleFactor to currently being used.</param>
+      <param name="size">The size.</param>
+    </member>
+    <member name="M:UnityEngine.UI.LayoutGroup.SetChildAlongAxisWithScale(UnityEngine.RectTransform,System.Int32,System.Single,System.Single,System.Single)">
+      <summary>
+        <para>Set the position and size of a child layout element along the given axis with a known scale factor.</para>
+      </summary>
+      <param name="rect">The RectTransform of the child layout element.</param>
+      <param name="axis">The axis to set the position and size along. 0 is horizontal and 1 is vertical.</param>
+      <param name="pos">The position from the left side or top.</param>
+      <param name="scaleFactor">The scaleFactor to currently being used.</param>
       <param name="size">The size.</param>
     </member>
     <member name="M:UnityEngine.UI.LayoutGroup.SetDirty">
@@ -4892,7 +5004,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="M:UnityEngine.UI.Scrollbar.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>Handling for when the scrollbar value is begin being dragged.</para>
+        <para>Handling for when the scrollbar value is beginning to be dragged.</para>
       </summary>
       <param name="eventData"></param>
     </member>
@@ -4942,12 +5054,18 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>UnityEvent callback for when a scrollbar is scrolled.</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.UI.Scrollbar.SetDirection(UnityEngine.UI.Scrollbar/Direction,System.Boolean)">
+    <member name="M:UnityEngine.UI.Scrollbar.SetDirection">
       <summary>
         <para>Set the direction of the scrollbar, optionally setting the layout as well.</para>
       </summary>
       <param name="direction">The direction of the scrollbar.</param>
       <param name="includeRectLayouts">Should the layout be flipped together with the direction?</param>
+    </member>
+    <member name="M:UnityEngine.UI.Scrollbar.SetValueWithoutNotify(System.Single)">
+      <summary>
+        <para>Set the value of the scrollbar without invoking onValueChanged callback.</para>
+      </summary>
+      <param name="input">The new value for the scrollbar.</param>
     </member>
     <member name="T:UnityEngine.UI.ScrollRect">
       <summary>
@@ -5136,9 +5254,9 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="M:UnityEngine.UI.ScrollRect.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>Handling for when the content is beging being dragged.</para>
+        <para>Handling for when the content is being dragged.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">The values used when the drag is started.</param>
     </member>
     <member name="M:UnityEngine.UI.ScrollRect.OnDisable">
       <summary>
@@ -5226,6 +5344,13 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Called by the layout system.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.UI.ScrollRect.SetNormalizedPosition(System.Single,System.Int32)">
+      <summary>
+        <para>Set the horizontal or vertical scroll position as a value between 0 and 1, with 0 being at the left or at the bottom.</para>
+      </summary>
+      <param name="value">The position to set, between 0 and 1.</param>
+      <param name="axis">The axis to set: 0 for horizontal, 1 for vertical.</param>
+    </member>
     <member name="M:UnityEngine.UI.ScrollRect.StopMovement">
       <summary>
         <para>Sets the velocity to zero on both axes so the content stops moving.</para>
@@ -5238,7 +5363,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="M:UnityEngine.UI.ScrollRect.UpdatePrevData">
       <summary>
-        <para>Helper function to update the previous data fields on a ScrollRect.</para>
+        <para>Helper function to update the previous data fields on a ScrollRect. Call this before you change data in the ScrollRect.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.Selectable">
@@ -5246,9 +5371,19 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Simple selectable object - derived from to create a selectable control.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Selectable.allSelectableCount">
+      <summary>
+        <para>Count how many selectables are currently active.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.UI.Selectable.allSelectables">
       <summary>
-        <para>List of all the selectable objects currently active in the scene.</para>
+        <para>List of all the selectable objects currently active in the Scene.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.Selectable.allSelectablesArray">
+      <summary>
+        <para>Duplicated array of all the selectable objects currently active in the Scene.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.Selectable.animationTriggers">
@@ -5273,7 +5408,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="P:UnityEngine.UI.Selectable.interactable">
       <summary>
-        <para>UI.Selectable.interactable.</para>
+        <para>Use to enable or disable the ability to select a selectable UI element (for example, a Button).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.Selectable.navigation">
@@ -5295,6 +5430,15 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       <summary>
         <para>The type of transition that will be applied to the targetGraphic when the state changes.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.UI.Selectable.AllSelectablesNoAlloc(UnityEngine.UI.Selectable[])">
+      <summary>
+        <para>Non allocating option to get all the selectable objects currently active in the Scene.</para>
+      </summary>
+      <param name="selectables">The array of Selectables to populated.</param>
+      <returns>
+        <para>The number of Selectable elements copied into the array.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.UI.Selectable.DoStateTransition(UnityEngine.UI.Selectable/SelectionState,System.Boolean)">
       <summary>
@@ -5349,28 +5493,25 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Clear any internal state from the Selectable (used when disabling).</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.UI.Selectable.IsHighlighted(UnityEngine.EventSystems.BaseEventData)">
+    <member name="M:UnityEngine.UI.Selectable.IsHighlighted">
       <summary>
-        <para>Is the selectable currently 'highlighted'.</para>
+        <para>Returns whether the selectable is currently 'highlighted' or not.</para>
       </summary>
-      <param name="eventData"></param>
     </member>
     <member name="M:UnityEngine.UI.Selectable.IsInteractable">
       <summary>
         <para>UI.Selectable.IsInteractable.</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.UI.Selectable.IsPressed(UnityEngine.EventSystems.BaseEventData)">
+    <member name="M:UnityEngine.UI.Selectable.IsPressed">
       <summary>
         <para>Whether the current selectable is being pressed.</para>
       </summary>
-      <param name="eventData"></param>
     </member>
     <member name="M:UnityEngine.UI.Selectable.IsPressed">
       <summary>
         <para>Whether the current selectable is being pressed.</para>
       </summary>
-      <param name="eventData"></param>
     </member>
     <member name="M:UnityEngine.UI.Selectable.OnDeselect(UnityEngine.EventSystems.BaseEventData)">
       <summary>
@@ -5424,6 +5565,36 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Selects this Selectable.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.UI.Selectable.SelectionState">
+      <summary>
+        <para>An enumeration of selected states of objects.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.UI.Selectable.SelectionState.Disabled">
+      <summary>
+        <para>The UI object cannot be selected.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.UI.Selectable.SelectionState.Highlighted">
+      <summary>
+        <para>The UI object is highlighted.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.UI.Selectable.SelectionState.Normal">
+      <summary>
+        <para>The UI object can be selected.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.UI.Selectable.SelectionState.Pressed">
+      <summary>
+        <para>The UI object is pressed.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.UI.Selectable.SelectionState.Selected">
+      <summary>
+        <para>The UI object is selected.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.UI.Selectable.Transition">
       <summary>
         <para>Transition mode for a Selectable.</para>
@@ -5448,12 +5619,6 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       <summary>
         <para>Use a sprite swap transition.</para>
       </summary>
-    </member>
-    <member name="M:UnityEngine.UI.Selectable.UpdateSelectionState(UnityEngine.EventSystems.BaseEventData)">
-      <summary>
-        <para>Internally update the selection state of the Selectable.</para>
-      </summary>
-      <param name="eventData"></param>
     </member>
     <member name="T:UnityEngine.UI.Shadow">
       <summary>
@@ -5632,16 +5797,22 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       <param name="input">The new value for the slider.</param>
       <param name="sendCallback">If the OnValueChanged callback should be invoked.</param>
     </member>
-    <member name="M:UnityEngine.UI.Slider.SetDirection(UnityEngine.UI.Slider/Direction,System.Boolean)">
+    <member name="M:UnityEngine.UI.Slider.SetDirection">
       <summary>
         <para>Sets the direction of this slider, optionally changing the layout as well.</para>
       </summary>
       <param name="direction">The direction of the slider.</param>
       <param name="includeRectLayouts">Should the layout be flipped together with the slider direction?</param>
     </member>
+    <member name="M:UnityEngine.UI.Slider.SetValueWithoutNotify(System.Single)">
+      <summary>
+        <para>Set the value of the slider without invoking onValueChanged callback.</para>
+      </summary>
+      <param name="input">The new value for the slider.</param>
+    </member>
     <member name="T:UnityEngine.UI.Slider.SliderEvent">
       <summary>
-        <para>Event type used by the Slider.</para>
+        <para>Event type used by the UI.Slider.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.SpriteState">
@@ -5662,6 +5833,11 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     <member name="P:UnityEngine.UI.SpriteState.pressedSprite">
       <summary>
         <para>Pressed sprite.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.UI.SpriteState.selectedSprite">
+      <summary>
+        <para>Selected sprite.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.UI.Text">
@@ -5781,7 +5957,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="P:UnityEngine.UI.Text.text">
       <summary>
-        <para>The string value this text will display.</para>
+        <para>The string value this Text displays.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.Text.verticalOverflow">
@@ -5841,7 +6017,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="P:UnityEngine.UI.Toggle.isOn">
       <summary>
-        <para>Is the toggle on.</para>
+        <para>Return or set whether the Toggle is on or not.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Toggle.onValueChanged">
@@ -5887,6 +6063,12 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       </summary>
       <param name="executing"></param>
     </member>
+    <member name="M:UnityEngine.UI.Toggle.SetIsOnWithoutNotify(System.Boolean)">
+      <summary>
+        <para>Set isOn without invoking onValueChanged callback.</para>
+      </summary>
+      <param name="value">New value for isOn.</param>
+    </member>
     <member name="T:UnityEngine.UI.Toggle.ToggleEvent">
       <summary>
         <para>UnityEvent callback for when a toggle is toggled.</para>
@@ -5909,7 +6091,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="T:UnityEngine.UI.ToggleGroup">
       <summary>
-        <para>A component that represents a group of Toggles.</para>
+        <para>A component that represents a group of UI.Toggles.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.ToggleGroup.allowSwitchOff">
@@ -5930,24 +6112,29 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Are any of the toggles on?</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.UI.ToggleGroup.NotifyToggleOn(UnityEngine.UI.Toggle)">
+    <member name="M:UnityEngine.UI.ToggleGroup.EnsureValidState">
+      <summary>
+        <para>Ensure that the toggle group still has a valid state.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.UI.ToggleGroup.NotifyToggleOn">
       <summary>
         <para>Notify the group that the given toggle is enabled.</para>
       </summary>
-      <param name="toggle"></param>
     </member>
-    <member name="M:UnityEngine.UI.ToggleGroup.RegisterToggle(UnityEngine.UI.Toggle)">
+    <member name="M:UnityEngine.UI.ToggleGroup.RegisterToggle">
       <summary>
         <para>Register a toggle with the group.</para>
       </summary>
       <param name="toggle">To register.</param>
     </member>
-    <member name="M:UnityEngine.UI.ToggleGroup.SetAllTogglesOff">
+    <member name="M:UnityEngine.UI.ToggleGroup.SetAllTogglesOff()">
       <summary>
         <para>Switch all toggles off.</para>
       </summary>
+      <param name="sendCallback"></param>
     </member>
-    <member name="M:UnityEngine.UI.ToggleGroup.UnregisterToggle(UnityEngine.UI.Toggle)">
+    <member name="M:UnityEngine.UI.ToggleGroup.UnregisterToggle">
       <summary>
         <para>Toggle to unregister.</para>
       </summary>
@@ -5984,7 +6171,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="M:UnityEngine.UI.VertexHelper.AddUIVertexStream(System.Collections.Generic.List`1&lt;UnityEngine.UIVertex&gt;,System.Collections.Generic.List`1&lt;System.Int32&gt;)">
       <summary>
-        <para>Add a stream of custom UIVertex and corrisponding indices.</para>
+        <para>Add a stream of custom UIVertex and corresponding indices.</para>
       </summary>
       <param name="verts">The custom stream of verts to add to the helpers internal data.</param>
       <param name="indices">The custom stream of indices to add to the helpers internal data.</param>

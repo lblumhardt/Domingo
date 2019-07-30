@@ -13,14 +13,14 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         //distance from camera to player
-        offset = 3.0f;
+        offset = 1.3f;
     }
 
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
 
-        transform.position = player.transform.position - (player.transform.forward * offset) + new Vector3(0.0f, 1.0f, 0.0f);
+        transform.position = player.transform.position - (player.transform.forward * offset) + new Vector3(0.0f, 0.3f, 0.0f);
         transform.LookAt(player.transform);
     }
 }

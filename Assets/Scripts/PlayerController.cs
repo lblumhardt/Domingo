@@ -14,35 +14,67 @@ public class PlayerController : MonoBehaviour
 
     private float airFriction = 1.6f;
 
-    private float maxDistanceToQueryForRaycastHit = 2.0f;
+    private float maxDistanceToQueryForRaycastHit = 0.5f;
+
+    [SerializeField]
+    private float jumpeHeight = 10.0f;
+
+    [SerializeField]
+    private Joystick joystick;
+
+    [SerializeField]
+    private GameObject brakeButtonObject;
+
+    private BrakeButton brakeButtonScript;
+
+    int jumpDebug = 0;
+
+    public bool gasDown = false;
 
     void Start()
     {
         kart = this.GetComponent<Kart>();
+        brakeButtonScript = brakeButtonObject.GetComponent<BrakeButton>();
     }
 
     void Update()
     {
         //find floor
-        currFloor = FindFloorIfAny();
-
+        //currFloor = FindFloorIfAny();
+        if (currFloor != null)
+        {
+            //Debug.Log("there's a floor beneath me!");
+        }
+        else
+        {
+            //Debug.Log("I'm jumping!!");
+        }
         Move();
     }
 
     public void Move()
     {
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant;
+        //var x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant;
+        var x = joystick.Horizontal * Time.deltaTime * turningConstant;
         transform.Rotate(0, x, 0);
         
+        //jump
+        if (Input.GetKey(KeyCode.Space) && !isJumping())
+        {
+            jumpDebug++;
+            Debug.Log("I've jumped " + jumpDebug + " times");
+            transform.Translate(0, jumpeHeight, 0);
+        }
+
         //apply gas
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || gasDown)
         {
             currSpeed = currSpeed + (kart.AccelerationConstant * Time.deltaTime);
 
         }
            
         //apply brakes
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || brakeButtonScript.pressed)
         {
             currSpeed = currSpeed - (kart.BrakeAccel * Time.deltaTime);
         }
@@ -97,7 +129,7 @@ public class PlayerController : MonoBehaviour
     {
         //raycast directly below player
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), out hit, maxDistanceToQueryForRaycastHit))
+        if (Physics.Raycast(this.transform.position, new Vector3(0, -0.01f, 0), out hit, maxDistanceToQueryForRaycastHit))
         {
             return hit.transform.gameObject.GetComponent<Floor>();
         }
@@ -117,6 +149,23 @@ public class PlayerController : MonoBehaviour
             {
                 currSpeed = -1.5f;
             }
+        }
+    }
+
+    /**
+     * Returns true if the player is in the air this frame
+     */
+    private bool isJumping()
+    {
+        //find floor
+        Floor floor = FindFloorIfAny();
+        if (floor != null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }
