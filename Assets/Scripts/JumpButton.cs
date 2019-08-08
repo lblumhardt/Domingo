@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GasButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
+public class JumpButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
 
     [HideInInspector]
     public bool pressed;

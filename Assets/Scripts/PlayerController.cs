@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour
 {
 
-    float turningConstant = 200.0f;
+    float turningConstant = 90.0f;
     float speedConstant = 6.5f;
 
     Kart kart;
@@ -25,16 +25,34 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject brakeButtonObject;
 
+    [SerializeField]
+    private GameObject gasButtonObject;
+
+    [SerializeField]
+    private GameObject jumpButtonObject;
+
     private BrakeButton brakeButtonScript;
+
+    private GasButton gasButtonScript;
+
+    private JumpButton jumpButtonScript;
 
     int jumpDebug = 0;
 
+    private float jumpCooldown = 1.0f;
+    private float jumpTimer = 0.0f;
+
     public bool gasDown = false;
+
+    private Rigidbody rigidBody;
 
     void Start()
     {
         kart = this.GetComponent<Kart>();
         brakeButtonScript = brakeButtonObject.GetComponent<BrakeButton>();
+        gasButtonScript = gasButtonObject.GetComponent<GasButton>();
+        jumpButtonScript = jumpButtonObject.GetComponent<JumpButton>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -54,20 +72,34 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        //var x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant;
         var x = joystick.Horizontal * Time.deltaTime * turningConstant;
+
+        //TODO : remove keyboard controls?
+        if (x == 0)
+        {
+            x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant;
+        }
+
         transform.Rotate(0, x, 0);
-        
+
+        var jumpHeight = 0;
+
         //jump
-        if (Input.GetKey(KeyCode.Space) && !isJumping())
+        if ((Input.GetKey(KeyCode.Space) || jumpButtonScript.pressed) && !isJumping() && jumpTimer <= 0.0f)
         {
             jumpDebug++;
             Debug.Log("I've jumped " + jumpDebug + " times");
-            transform.Translate(0, jumpeHeight, 0);
+            rigidBody.AddForce(0, 200, 0);
+            jumpTimer = jumpCooldown;
+        }
+
+        if (jumpTimer > 0.0f)
+        {
+            jumpTimer -= Time.deltaTime;
         }
 
         //apply gas
-        if (Input.GetKey(KeyCode.W) || gasDown)
+        if (Input.GetKey(KeyCode.W) || gasButtonScript.pressed)
         {
             currSpeed = currSpeed + (kart.AccelerationConstant * Time.deltaTime);
 
@@ -129,7 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         //raycast directly below player
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, new Vector3(0, -0.01f, 0), out hit, maxDistanceToQueryForRaycastHit))
+        if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), out hit, maxDistanceToQueryForRaycastHit))
         {
             return hit.transform.gameObject.GetComponent<Floor>();
         }
