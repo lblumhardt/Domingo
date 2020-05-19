@@ -3,7 +3,6 @@
 public class PlayerController : MonoBehaviour
 {
 
-    float turningConstant = 90.0f;
     float speedConstant = 6.5f;
 
     Kart kart;
@@ -44,6 +43,13 @@ public class PlayerController : MonoBehaviour
 
     public bool gasDown = false;
 
+    //This is the time (in seconds?) the player has to turn for to get the stronger turn
+    private float turnTimeThresh = 1.3f;
+    float turningConstant1 = 45.0f;
+    float turningConstant2 = 90.0f;
+    private float timeTurning = 0.0f;
+
+
     private Rigidbody rigidBody;
 
     void Start()
@@ -72,15 +78,45 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        var x = joystick.Horizontal * Time.deltaTime * turningConstant;
+        float x = 0;
+        if (timeTurning >= turnTimeThresh)
+        {
+            x = joystick.Horizontal * Time.deltaTime * turningConstant2;
+        } else
+        {
+            x = joystick.Horizontal * Time.deltaTime * turningConstant1;
+
+        }
 
         //TODO : remove keyboard controls?
         if (x == 0)
         {
-            x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant;
+            if (timeTurning >= turnTimeThresh)
+            {
+                x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant2;
+            }
+            else
+            {
+                x = Input.GetAxis("Horizontal") * Time.deltaTime * turningConstant1;
+            }
         }
 
-        transform.Rotate(0, x, 0);
+        //Turning and reversing logic
+        if (currSpeed > 0)
+        {
+            timeTurning += Time.deltaTime;
+            transform.Rotate(0, x, 0);
+        }
+        else if (currSpeed < 0)
+        {
+            transform.Rotate(0, -x, 0);
+        }
+
+        if (x == 0 || currSpeed == 0)
+        {
+            timeTurning = 0.0f;
+        }
+
 
         var jumpHeight = 0;
 
