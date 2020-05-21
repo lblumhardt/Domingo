@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     public bool gasDown = false;
 
     //This is the time (in seconds?) the player has to turn for to get the stronger turn
-    private float turnTimeThresh = 1.3f;
+    private float turnTimeThresh = .7f;
     float turningConstant1 = 45.0f;
     float turningConstant2 = 90.0f;
     private float timeTurning = 0.0f;
